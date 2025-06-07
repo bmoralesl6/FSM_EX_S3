@@ -1,56 +1,60 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "8-bit ALU for Basys 3"    
+  author:       "Brandon Morales"       
+  discord:      "00"      
+  description:  "ALU de 8 bits con multiplexor de display para Basys 3"
+  language:     "Verilog" 
+  clock_hz:     100000000   
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x1"          
 
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_basys3"
 
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "project.v"
+    - "top.v"
+    - "alu_8bit.v"
+    - "display_mux.v"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
-  # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  # Entradas
+  ui[0]: "clk"
+  ui[1]: "sw[0]"
+  ui[2]: "sw[1]"
+  ui[3]: "sw[2]"
+  ui[4]: "sw[3]"
+  ui[5]: "sw[4]"
+  ui[6]: "sw[5]"
+  ui[7]: "sw[6]"
+  
+  # Más entradas en los pines bidireccionales
+  uio[0]: "sw[7]"
+  uio[1]: "sw_b[0]"
+  uio[2]: "sw_b[1]"
+  uio[3]: "sw_b[2]"
+  uio[4]: "sw_b[3]"
+  uio[5]: "sw_b[4]"
+  uio[6]: "sw_b[5]"
+  uio[7]: "sw_b[6]"
 
-  # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  # Salidas
+  uo[0]: "sw_b[7]"
+  uo[1]: "sel[0]"
+  uo[2]: "sel[1]"
+  uo[3]: "sel[2]"
+  uo[4]: "led[0]"
+  uo[5]: "led[1]"
+  uo[6]: "led[2]"
+  uo[7]: "led[3]"
 
-  # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  # Bidireccionales adicionales
+  uio[0]: "led[4]"
+  uio[1]: "led[5]"
+  uio[2]: "led[6]"
+  uio[3]: "led[7]"
+  uio[4]: "led[8]"
+  uio[5]: "led[9]"
+  uio[6]: "led[10]"
+  uio[7]: "seg[0]"  
 
-# Do not change!
 yaml_version: 6
